@@ -1,3 +1,5 @@
+library(checkpoint)
+checkpoint::checkpoint("2016-11-15")
 install.packages("tibble")
 install.packages("readr")
 library(tibble)
@@ -37,6 +39,7 @@ combined_plant_geo_data <- data_frame(
                             Lat = NA,
                             Lon = NA
 )
+write.csv(combined_plant_geo_data, file = "data/combined-plant-geo-data.csv")
 
 # combined_plant_geo_data$Lat <- plant_geo_data_cleaned$Lat[which(plant_geo_data_cleaned$Plant.Id == combined_plant_geo_data$Plant.Id)]
 
@@ -46,11 +49,12 @@ for (i in 1:length(combined_plant_geo_data$Plant.Id)) # we can't do this in one 
   {
     combined_plant_geo_data$Lat[i] = NA # we don't have the lat lon, so just keep it NA
     combined_plant_geo_data$Lon[i] = NA #in if statements, you don't include comma separation...
+    combined_plant_geo_data$FuelType[i] = NA
   }
   else{
   combined_plant_geo_data$Lat[i] = plant_geo_data_cleaned$Lat[which(plant_geo_data_cleaned$Plant.Id == combined_plant_geo_data$Plant.Id[i])][1]
   combined_plant_geo_data$Lon[i] = as.numeric(plant_geo_data_cleaned$Lon[which(plant_geo_data_cleaned$Plant.Id == combined_plant_geo_data$Plant.Id[i])][1])
-  
+  combined_plant_geo_data$FuelType[i] = plant_geo_data_cleaned$FuelType[which(plant_geo_data_cleaned$Plant.Id == combined_plant_geo_data$Plant.Id[i])][1]
   } # assign the lat value to the combined table based on the lat info from the geo data where the plant id matches. it seems that there are a few plants in geo data with multiple lat/lon per plant ID, so let's just return the 1st one for now... [need to fix that issue]
 }
 
