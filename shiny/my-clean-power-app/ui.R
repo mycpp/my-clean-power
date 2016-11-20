@@ -11,6 +11,7 @@ library(shiny)
 library(plotly)
 library(leaflet)
 library(maps)
+library(dplyr)
 
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(
@@ -21,17 +22,41 @@ shinyUI(fluidPage(
   # Sidebar with a slider input for number of bins 
   sidebarLayout(
     sidebarPanel(
-        selectizeInput("stateInput", #inputID
-                       label = "State", #label
-                       choices = NULL,
-                       selected = "Alabama",
-                       multiple = FALSE,
-                       options = list(placeholder = 'select a state name'))
-      ),
-    
+              selectizeInput("fuelTypeInput", #inputID
+                             label = "Power Type", #label
+                             choices = c("BIT"),
+                             selected = "BIT",
+                             multiple = TRUE,
+                             options = list(placeholder = 'select a power type'))
+    ),
     # Show a plot of the generated distribution
     mainPanel(
       leafletOutput("map")
-      )
     )
+  )
 ))
+# # Define UI for application that draws a histogram
+# shinyUI(navbarPage("My Clean Power", id="nav",
+#   
+#   # Application title
+#   tabPanel("My Clean Power Map",
+#    div(class="outer",
+#        tags$head(
+#          includeCSS("styles.css")
+#        ),
+#     # Show a plot of the generated distribution
+#     leafletOutput("map", width = "100%", height = "100%"),
+#        
+#     absolutePanel(id="controls", fixed = TRUE, draggable = TRUE, top = 60, left="auto", right = 20, 
+#                   bottom = "auto", width = 330, height = "auto",
+#         selectizeInput("fuelTypeInput", #inputID
+#                        label = "Power Type", #label
+#                        choices = NULL,
+#                        selected = "BIT",
+#                        multiple = TRUE,
+#                        options = list(placeholder = 'select a power type')
+#                        )
+#                   )
+#       )
+#     )
+# ))
