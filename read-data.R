@@ -62,3 +62,10 @@ which(1:4 > 2)
 factor(plant_geo_data_cleaned$Plant.Id)
 which(plant_geo_data_cleaned$Plant.Id == 2727)
 combined_plant_geo_data$Lon <- as.numeric(combined_plant_geo_data$Lon)
+
+
+
+### Check things -----
+
+hist(geodata$Net.Gen, breaks = 12455, ylim = c(0, 3e3), xlim = c(0,5e3), col = "#ff8255")
+boxplot(geodata$Net.Gen, ylim = c(0, 0.5e3), col = "#ff8255")

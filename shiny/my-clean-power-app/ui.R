@@ -8,6 +8,7 @@
 #
 
 library(shiny)
+library(plotly)
 library(leaflet)
 library(maps)
 
@@ -30,12 +31,7 @@ shinyUI(fluidPage(
     
     # Show a plot of the generated distribution
     mainPanel(
-      tabsetPanel(type = "tabs",
-                           id = "tabset2",
-                           tabPanel("Generation (MWh) Map", leafletOutput("Genmap")),
-                           tabPanel("Carbon Emissions (tons of CO2) Map", leafletOutput("Carbonmap"))
-      
+      leafletOutput("map")
       )
     )
-  )
 ))
