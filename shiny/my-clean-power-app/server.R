@@ -53,9 +53,10 @@ shinyServer(function(input, output, session) {
       clearShapes() %>%
       addCircles(lng= ~Lon, lat = ~Lat, color=~pal(FuelType), stroke=FALSE, 
                  group = "Generation",
-                 popup=paste(sep = "<br/>",
-                             paste0("<i>",geodata.fuelType$Plant.Name,"</i>"),
-                             paste0("<b>",geodata.fuelType$FuelType,"</b>")),
+                 popup=~paste(sep = "<br/>",
+                             paste0("<i>",Plant.Name,"</i>"),
+                             paste0("<b>",FuelType,"</b>")),
+                             #paste0(format(Net.Gen/1e6, scientific = FALSE, digits = 2, nsmall = 2)," MW")), #geodata.fuelType$
                  fillOpacity=0.8, 
                  radius=~sqrt(abs((Net.Gen*500)/3.14159)))%>%
       addLayersControl(

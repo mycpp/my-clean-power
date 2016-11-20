@@ -15,17 +15,17 @@ library(dplyr)
 
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(
-  
+
   # Application title
   titlePanel("My Clean Power"),
-  
-  # Sidebar with a slider input for number of bins 
+
+  # Sidebar with a slider input for number of bins
   sidebarLayout(
     sidebarPanel(
               selectizeInput("fuelTypeInput", #inputID
                              label = "Power Type", #label
-                             choices = c("BIT"),
-                             selected = "BIT",
+                             choices = c("BIT"), #weird issue with jquery with shiny where it seems like this can't be null.
+                             selected = "BIT", #this is also weirdly needed.
                              multiple = TRUE,
                              options = list(placeholder = 'select a power type'))
     ),
@@ -37,7 +37,7 @@ shinyUI(fluidPage(
 ))
 # # Define UI for application that draws a histogram
 # shinyUI(navbarPage("My Clean Power", id="nav",
-#   
+# 
 #   # Application title
 #   tabPanel("My Clean Power Map",
 #    div(class="outer",
@@ -46,8 +46,8 @@ shinyUI(fluidPage(
 #        ),
 #     # Show a plot of the generated distribution
 #     leafletOutput("map", width = "100%", height = "100%"),
-#        
-#     absolutePanel(id="controls", fixed = TRUE, draggable = TRUE, top = 60, left="auto", right = 20, 
+# 
+#     absolutePanel(id="controls", fixed = TRUE, draggable = TRUE, top = 60, left="auto", right = 20,
 #                   bottom = "auto", width = 330, height = "auto",
 #         selectizeInput("fuelTypeInput", #inputID
 #                        label = "Power Type", #label
