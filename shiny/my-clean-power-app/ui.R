@@ -13,6 +13,7 @@ library(leaflet)
 library(maps)
 library(dplyr)
 
+checkpoint::checkpoint("2016-12-01")
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(
 
