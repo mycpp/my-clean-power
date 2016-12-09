@@ -5,8 +5,6 @@ cache:
   directories:
   - $TRAVIS_BUILD_DIR/_bookdown_files
 
-before_install:
-  - cd bookdown
 before_script:
   - chmod +x ./_build.sh
   - chmod +x ./_deploy.sh

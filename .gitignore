@@ -1,2 +1,7 @@
 .Rproj.user
-packrat/lib*/
+.Rhistory
+.RData
+_publish.R
+_book
+_bookdown_files
+rsconnect
