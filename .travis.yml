@@ -1,8 +1,8 @@
 language: r
 
 install:
- - R -e "0" --args --bootsrap-packrat
- 
+ - R -e "0" --args --bootstrap-packrat
+
 cache: 
   packages: yes
   directories:
