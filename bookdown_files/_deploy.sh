@@ -8,9 +8,8 @@ set -e
 git config --global user.email "apawlows@vols.utk.edu"
 git config --global user.name "Alex Pawlowski"
 
-git clone -b master https://${GITHUB_PAT}@github.com/${TRAVIS_REPO_SLUG}.git book-output
-cd book-output
+git clone -b master https://${GITHUB_PAT}@github.com/${TRAVIS_REPO_SLUG}.git
 cp -r ../docs/* ./
 git add --all *
-git commit -m"Update the book" || true
+git commit -m"Build the book" || true
 git push origin master
