@@ -1,6 +1,6 @@
 --- 
 title: "A Minimal Book Example"
-author: "Yihui Xie"
+author: "Alex Pawlowski"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
@@ -9,7 +9,7 @@ bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
 github-repo: mycpp/my-clean-power
-description: "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook."
+description: "Welcome to the documentation for My Clean Power, a tool used for visualization of US power plants. The chapters here outline ways to use the tool, as well as more information about how the tool was created and ways to contribute to its development."
 ---
 
 # Prerequisites
