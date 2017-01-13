@@ -3,8 +3,6 @@ language: r
 install:
  - R -e "0" --args --bootstrap-packrat
 
-r_github_packages: rstudio/bookdown
-
 cache: 
   packages: yes
   directories:
