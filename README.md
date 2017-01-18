@@ -1,1 +1,0 @@
-Hello this is the readme of the html files served by bookdown.
