@@ -8,20 +8,21 @@
 #
 # checkpoint::checkpoint("2016-11-15") setwd("~/GitHub/my-clean-power/shiny/my-clean-power-app")
 library(shiny)
+library(tidyverse)
 library(leaflet)
 library(maps)
 library(dplyr)
 
 ## Generation Data ----
 ### denotes functions used to call data from csv files
-generationData = read.csv("data/statedata.csv", #"https://docs.google.com/spreadsheets/d/1ZbDI31sSKatBoEVKo70TV_A4VwCBHK4pIoCWXB7yfx0/pub?gid=192701245&single=true&output=csv", 
-                          header = TRUE, stringsAsFactors = FALSE)  #variable associated with spreadsheet
+generationData = read_csv("data/statedata.csv") #"https://docs.google.com/spreadsheets/d/1ZbDI31sSKatBoEVKo70TV_A4VwCBHK4pIoCWXB7yfx0/pub?gid=192701245&single=true&output=csv", 
+                            #variable associated with spreadsheet
 
-statenames = read.csv("data/StateNames.csv",
-                        header = TRUE, stringsAsFactors = FALSE)  #variable associated with spreadsheet
+statenames = read_csv("data/StateNames.csv")
+                        #variable associated with spreadsheet
 
 ### Plant Location Data
-geodata <- read.csv("data/combined-plant-geo-data.csv", stringsAsFactors = FALSE) #variable associated with spreadsheet
+geodata <- read_csv("data/combined-plant-geo-data.csv") #variable associated with spreadsheet
 
 
 shinyServer(function(input, output, session) {

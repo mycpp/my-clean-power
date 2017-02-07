@@ -1,8 +1,7 @@
 PackratFormat: 1.4
 PackratVersion: 0.4.8.1
 RVersion: 3.3.2
-Repos: CRAN=https://mran.revolutionanalytics.com/snapshot/2016-11-01,
-    CRANextra=http://www.stats.ox.ac.uk/pub/RWin
+Repos: CRAN=https://mran.revolutionanalytics.com/snapshot/2017-01-30
 
 Package: BH
 Source: CRAN
@@ -26,6 +25,7 @@ Hash: 712773a3439bd32db5c40938e1a9aac2
 Package: RColorBrewer
 Source: CRAN
 Version: 1.1-2
+Hash: c0d56cd15034f395874c870141870c25
 
 Package: RCurl
 Source: CRAN
@@ -43,6 +43,11 @@ Source: CRAN
 Version: 0.12.7
 Hash: f0ba7322cfb66f1b563462faa9c2b2ab
 
+Package: V8
+Source: CRAN
+Version: 1.2
+Requires: Rcpp, curl, jsonlite
+
 Package: assertthat
 Source: CRAN
 Version: 0.1
@@ -57,9 +62,16 @@ Source: CRAN
 Version: 1.0-6
 Hash: 67d0775189fd0041d95abca618c5c07e
 
+Package: broom
+Source: CRAN
+Version: 0.4.1
+Requires: dplyr, plyr, psych, reshape2, stringr, tidyr
+Hash: c90145ada2eac0128487c21ab2ac9c78
+
 Package: colorspace
 Source: CRAN
 Version: 1.2-7
+Hash: a5cf9920b36c0a171e1b04ffed1ace5a
 
 Package: curl
 Source: CRAN
@@ -68,6 +80,7 @@ Version: 2.2
 Package: dichromat
 Source: CRAN
 Version: 2.0-0
+Hash: 08eed0c80510af29bb15f840ccfe37ce
 
 Package: digest
 Source: CRAN
@@ -77,20 +90,46 @@ Hash: 87165608ca8aeb0958835c3c5b52b6b7
 Package: dplyr
 Source: CRAN
 Version: 0.5.0
-Requires: R6, Rcpp, BH, DBI, assertthat, lazyeval, magrittr, tibble
+Requires: BH, DBI, R6, Rcpp, assertthat, lazyeval, magrittr, tibble
+
+Package: forcats
+Source: CRAN
+Version: 0.2.0
+Requires: magrittr, tibble
+Hash: e5a3b0b96a39f5581467b0c6366f7408
+
+Package: geojsonio
+Source: CRAN
+Version: 0.3.0
+Requires: jsonlite, magrittr, sp, httr, V8, maptools, readr, rgdal,
+    rgeos
 
 Package: ggplot2
 Source: CRAN
 Version: 2.1.0
 Requires: digest, gtable, plyr, reshape2, scales
+Hash: 50e297b0191179c39c7dcae0eff72b51
 
 Package: gtable
 Source: CRAN
 Version: 0.2.0
+Hash: cd78381a9d3fea966ac39bd0daaf5554
+
+Package: haven
+Source: CRAN
+Version: 1.0.0
+Requires: BH, Rcpp, hms, readr, tibble
+Hash: 2fee7590629252b68fbfbfa25a9bcc0f
 
 Package: hexbin
 Source: CRAN
 Version: 1.27.1
+Hash: 9f94c576cc4b9e83fd714ae8387272e6
+
+Package: hms
+Source: CRAN
+Version: 0.3
+Hash: 3fca8a1c97e6cfb297fe3f4690f82c58
 
 Package: htmltools
 Source: CRAN
@@ -101,7 +140,8 @@ Hash: a96dc1cfe628e66337c86be732567df2
 Package: htmlwidgets
 Source: CRAN
 Version: 0.7
-Requires: jsonlite, htmltools, yaml
+Requires: htmltools, jsonlite, yaml
+Hash: f60506850a2d752dff69fc2a31c5a339
 
 Package: httpuv
 Source: CRAN
@@ -112,7 +152,7 @@ Hash: 12c4ec43e5609293576e368c740c1f84
 Package: httr
 Source: CRAN
 Version: 1.2.1
-Requires: R6, jsonlite, mime, curl, openssl
+Requires: R6, curl, jsonlite, mime, openssl
 
 Package: jsonlite
 Source: CRAN
@@ -122,6 +162,7 @@ Hash: 86d4b85b84421a4815f1bb4872e30ef4
 Package: labeling
 Source: CRAN
 Version: 0.3
+Hash: ecf589b42cd284b03a4beb9665482d3e
 
 Package: lazyeval
 Source: CRAN
@@ -130,8 +171,15 @@ Version: 0.2.0
 Package: leaflet
 Source: CRAN
 Version: 1.0.1
-Requires: htmltools, RColorBrewer, base64enc, htmlwidgets, magrittr,
+Requires: RColorBrewer, base64enc, htmltools, htmlwidgets, magrittr,
     markdown, png, raster, scales, sp
+Hash: 749ac8c776a57c686ab8c90b5a6818fb
+
+Package: lubridate
+Source: CRAN
+Version: 1.6.0
+Requires: stringr
+Hash: b90f4cbefe0b3c545dd68b22c66a8a12
 
 Package: magrittr
 Source: CRAN
@@ -140,21 +188,40 @@ Version: 1.5
 Package: maps
 Source: CRAN
 Version: 3.1.1
+Hash: 4a0a1b1764bfe2c41c6fc21790408caf
+
+Package: maptools
+Source: CRAN
+Version: 0.8-41
+Requires: sp
 
 Package: markdown
 Source: CRAN
 Version: 0.7.7
 Requires: mime
+Hash: fea2343a1119d61b0cc5c0a950d103a3
 
 Package: mime
 Source: CRAN
 Version: 0.5
 Hash: 463550cf44fb6f0a2359368f42eebe62
 
+Package: mnormt
+Source: CRAN
+Version: 1.5-5
+Hash: d0d5efbb1fb26d2dc5f9394c223084b5
+
+Package: modelr
+Source: CRAN
+Version: 0.1.0
+Requires: broom, dplyr, lazyeval, magrittr, purrr, tibble, tidyr
+Hash: 7c9848bf4d734f38b8ce91022d8de949
+
 Package: munsell
 Source: CRAN
 Version: 0.4.3
 Requires: colorspace
+Hash: f96d896947fcaf9b6d0074002e9f4f9d
 
 Package: openssl
 Source: CRAN
@@ -168,33 +235,67 @@ Hash: 6ad605ba7b4b476d84be6632393f5765
 Package: plotly
 Source: CRAN
 Version: 4.5.2
-Requires: digest, jsonlite, base64enc, dplyr, ggplot2, hexbin,
-    htmlwidgets, httr, lazyeval, magrittr, purrr, scales, tibble,
-    tidyr, viridisLite
+Requires: base64enc, digest, dplyr, ggplot2, hexbin, htmlwidgets, httr,
+    jsonlite, lazyeval, magrittr, purrr, scales, tibble, tidyr,
+    viridisLite
+Hash: 4344f5c47b8df6dae288601d4c0cee44
 
 Package: plyr
 Source: CRAN
 Version: 1.8.4
 Requires: Rcpp
+Hash: 75ca080b10a9314a9b293964331e5df7
 
 Package: png
 Source: CRAN
 Version: 0.1-7
+Hash: 421d7d6e0fb4bd885ecbd909b6456b8b
+
+Package: psych
+Source: CRAN
+Version: 1.6.12
+Requires: mnormt
+Hash: 9d4b62cad4b931e1726cb0b0a9bc55fe
 
 Package: purrr
 Source: CRAN
 Version: 0.2.2
-Requires: Rcpp, BH, dplyr, lazyeval, magrittr
+Requires: BH, Rcpp, dplyr, lazyeval, magrittr
+Hash: 14bc8b3a4c61f67866ebfb413f77ff9f
 
 Package: raster
 Source: CRAN
 Version: 2.5-8
 Requires: Rcpp, sp
+Hash: 99156195f8997007a98360092edea08e
+
+Package: readr
+Source: CRAN
+Version: 1.0.0
+Requires: BH, R6, Rcpp, curl, tibble, hms
+Hash: d7cf8e4bfe7f5fa25d908362735bc9ae
+
+Package: readxl
+Source: CRAN
+Version: 0.1.1
+Requires: Rcpp
+Hash: b8f078ed7d05f35efd435db8b7be0ebf
 
 Package: reshape2
 Source: CRAN
 Version: 1.4.2
 Requires: Rcpp, plyr, stringr
+Hash: e67d3313d2413c398da41eba4a4e7520
+
+Package: rgdal
+Source: CRAN
+Version: 1.2-5
+Requires: sp
+
+Package: rgeos
+Source: CRAN
+Version: 0.3-22
+Requires: sp
 
 Package: rsconnect
 Source: CRAN
@@ -207,10 +308,23 @@ Source: CRAN
 Version: 0.6
 Hash: fd256f8bfb9a64cc35f98b0decb1a79f
 
+Package: rvest
+Source: CRAN
+Version: 0.3.2
+Requires: httr, magrittr, selectr, xml2
+Hash: c69f7526520bad66fd2111ebe8b1364b
+
 Package: scales
 Source: CRAN
 Version: 0.4.0
-Requires: Rcpp, RColorBrewer, dichromat, labeling, munsell, plyr
+Requires: RColorBrewer, Rcpp, dichromat, labeling, munsell, plyr
+Hash: c4a91e7a322e03813b68b73940ce031f
+
+Package: selectr
+Source: CRAN
+Version: 0.3-1
+Requires: stringr
+Hash: 367275e3dcdd208339e131c7a41bec56
 
 Package: shiny
 Source: CRAN
@@ -231,25 +345,48 @@ Version: 1.2-3
 Package: stringi
 Source: CRAN
 Version: 1.1.2
+Hash: 1ad6b1cc11d982ac233bf2fa2f7c9684
 
 Package: stringr
 Source: CRAN
 Version: 1.1.0
 Requires: magrittr, stringi
+Hash: 4d21d0063b37a17ea18eaec6acd29bf3
 
 Package: tibble
 Source: CRAN
 Version: 1.2
 Requires: Rcpp, assertthat, lazyeval
 
+Package: tidyjson
+Source: CRAN
+Version: 0.2.1
+Requires: assertthat, jsonlite, dplyr
+
 Package: tidyr
 Source: CRAN
 Version: 0.6.0
 Requires: Rcpp, dplyr, lazyeval, magrittr, stringi, tibble
+Hash: daf06bb30f2d9581e69609e0c0f7d38a
+
+Package: tidyverse
+Source: CRAN
+Version: 1.1.1
+Requires: broom, dplyr, forcats, ggplot2, haven, hms, httr, jsonlite,
+    lubridate, magrittr, modelr, purrr, readr, readxl, rvest, stringr,
+    tibble, tidyr, xml2
+Hash: 72d5fada870c90b835bbdfc281283c99
 
 Package: viridisLite
 Source: CRAN
 Version: 0.1.3
+Hash: d16a33135b1f4c8818b8cd569da3913f
+
+Package: xml2
+Source: CRAN
+Version: 1.1.1
+Requires: BH, Rcpp
+Hash: 383085cb745528742fcfec4037776fbc
 
 Package: xtable
 Source: CRAN
