@@ -18,26 +18,31 @@ library(dplyr)
 generationData = read_csv("data/statedata.csv") #"https://docs.google.com/spreadsheets/d/1ZbDI31sSKatBoEVKo70TV_A4VwCBHK4pIoCWXB7yfx0/pub?gid=192701245&single=true&output=csv", 
                             #variable associated with spreadsheet
 
+
 statenames = read_csv("data/StateNames.csv")
                         #variable associated with spreadsheet
 
 ### Plant Location Data
 geodata <- read_csv("data/combined-plant-geo-data.csv") #variable associated with spreadsheet
-
+geodata_sum <- geodata %>%
+  group_by(Plant.Id) %>%
+  summarise(Net.Gen = sum(Net.Gen), Lat = mean(Lat), Lon = mean(Lon), FuelType = FuelType[1], Plant.Name = Plant.Name[1]) %>%
+  filter(Net.Gen > 100)
 
 shinyServer(function(input, output, session) {
-  updateSelectizeInput(session,
+  
+  observe({updateSelectizeInput(session,
                        'fuelTypeInput',
-                       choices = filter(geodata, Net.Gen > 100)$FuelType, #must be a character vector!!! http://shiny.rstudio.com/articles/selectize.html
+                       choices = geodata_sum$FuelType, #must be a character vector!!! http://shiny.rstudio.com/articles/selectize.html
                        selected = "BIT",
                        server = TRUE)
-
+  })
   # Leaflet Map -----------------------------------------------------------------------------------------------------------
 
   ## set the color palette which is by Fuel Type https://rstudio.github.io/leaflet/colors.html
    pal <- colorFactor( # palette = color of fuel type.
      palette(),  #default range of color palette (continuous)
-     domain = filter(geodata, Net.Gen > 100)$FuelType #
+     domain = geodata_sum$FuelType #
    ) #limits num of colors in palette to num of variables in Fuel Type  (discrete)
   output$map <- renderLeaflet({
     leaflet() %>% #blank leaflet container, but I want to add stuff with '%>%'
@@ -50,14 +55,21 @@ shinyServer(function(input, output, session) {
       )
       })
 
-  observe({
+  filteredPlants <- reactive({
     fuel.Type <- input$fuelTypeInput
     print(fuel.Type) #for troubleshooting
-    geodata.fuelType = filter(geodata, Net.Gen > 100, FuelType %in% fuel.Type) #%in% looking for matches between the column in geodata with what the user selects
-    leafletProxy("map", data = geodata.fuelType) %>% #map is calling upon output$map because the leaflet object has already been defined.
+    geodata_sum.fuelType = filter(geodata_sum, FuelType %in% fuel.Type) 
+    geodata_sum.fuelType
+  })
+  
+  observe({
+#%in% looking for matches between the column in geodata with what the user selects
+    leafletProxy("map") %>% #map is calling upon output$map because the leaflet object has already been defined.
       clearShapes() %>% #no crap left over from the previous inputs user put in. could be performance constraint if there's a lot of data needed.
-      addCircles(lng= ~Lon, lat = ~Lat, color=~pal(FuelType), stroke=FALSE, # this is where the magic happens.
+      addCircles(data = filteredPlants(),
+                 lng= ~Lon, lat = ~Lat, color=~pal(FuelType), stroke=FALSE, # this is where the magic happens.
                  group = "Generation",                                      # "~" = geodata.fuelType$, which means the character seq. following is a column name of the data set I defined as "data"
+                 layerId = ~Plant.Id,
                  popup=~paste(sep = "<br/>",  #br is line break             # second magic happens.
                              paste0("<i>",Plant.Name,"</i>"), #paste0 = no separator. 
                              paste0("<b>",FuelType,"</b>")),  # i = italic, b = bold in display
@@ -67,7 +79,7 @@ shinyServer(function(input, output, session) {
   })
   
   observe({
-    proxy <- leafletProxy("map", data = filter(geodata, Net.Gen > 100))
+    proxy <- leafletProxy("map", data = geodata_sum)
     proxy %>% clearControls() %>%    
       addLegend("bottomleft",       # add Legend
                 pal = pal,

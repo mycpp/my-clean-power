@@ -25,7 +25,7 @@ shinyUI(fluidPage(
               selectizeInput("fuelTypeInput", #inputID
                              label = "Power Type", #label
                              choices = c("BIT"), #weird issue with jquery with shiny where it seems like this can't be null.
-                             selected = "BIT", #this is also weirdly needed.
+                             selected = 'BIT', #this is also weirdly needed.
                              multiple = TRUE,
                              options = list(placeholder = 'select a power type'))
     ),
