@@ -270,6 +270,7 @@ Requires: colorspace
 Package: nlme
 Source: CRAN
 Version: 3.1-130
+Hash: 37e6b5af14eefb08c1e5163c640d8162
 
 Package: openssl
 Source: CRAN
@@ -339,6 +340,12 @@ Source: CRAN
 Version: 0.3-22
 Hash: e15e47bcee06e2f519295c0a5a60005c
 Requires: sp
+
+Package: rsconnect
+Source: CRAN
+Version: 0.7
+Hash: 90add0a55eb94c2576714af9ee30a884
+Requires: PKI, RCurl, RJSONIO, digest, packrat, rstudioapi, yaml
 
 Package: rstudioapi
 Source: CRAN
