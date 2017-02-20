@@ -2,5 +2,5 @@
 .Rhistory
 .RData
 .Ruserdata
-packrat/lib*/
 apikeys.R
+packrat/lib*/
