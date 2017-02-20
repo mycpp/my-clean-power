@@ -1,0 +1,32 @@
+Fuel.Type,Fuel.Simplified
+WAT,Hydro
+BIT,Coal
+NG,Natural Gas
+NUC,Nuclear
+LIG,Coal
+SUB,Coal
+NA,N/A
+GEO,Geothermal
+LFG,Waste
+WND,Wind
+KER,Oil
+RFO,Oil
+WDS,Biomass
+DFO,Oil
+JF,Oil
+MSW,Waste
+SUN,Solar
+PC,Oil
+WC,Coal
+WH,Waste Heat
+BLQ,Waste
+OG,Natural Gas
+OBG,Biomass
+WO,Oil
+BFG,Other
+OBS,Biomass
+PUR,Steam
+WDL,Biomass
+AB,Biomass
+OTH,Oil
+OBL,Biomass
